@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app='musicApp'>
+
+<head>
+  <meta charset="utf-8">
+  <title>Music App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+  <div class="row" ng-controller='MainController'>
+    <div class='col s2'>
+      <div class="container">
+        <ul>
+          <li class='bold'>
+            <a href='#' class='waves-effect waves-teal' ng-click='select = 1'>Hype Machine</a>
+          </li>
+          <li class='bold'>
+            <a href='#' class='waves-effect waves-teal' ng-click='select = 2'>iTunes</a>
+          </li>
+          <li class='bold'>
+            <a href='#' class='waves-effect waves-teal' ng-click='select = 3'>last.fm</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div class='col s10'>
+      <div class="container">
+        <div class="row">
+
+          <div ng-bind-html='scWidget'></div>
+
+          <div class="col s10">
+            <div class="card" ng-show='select === 1'>
+              <div class="card-content">
+                <span class="card-title">Hype Machine</span>
+                <div ng-repeat='list in hypem | limitTo:quantity'>
+                  <a class='waves-effect' href='#'>{{list.artist}} - {{list.title}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col s10">
+            <div class="card" ng-show='select === 2'>
+              <div class="card-content">
+                <span class="card-title">iTunes</span>
+                <div ng-repeat='list in itunes | limitTo:quantity'>
+                    <a class='waves-effect' href='#'>{{list["im:artist"].label}} - {{list["im:name"].label}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s10">
+            <div class="card" ng-show='select === 3'>
+              <div class="card-content">
+                <span class="card-title">last.fm</span>
+                <div ng-repeat='list in lastfm | limitTo:quantity'>
+                    <a class='waves-effect' href='#'>{{list.artist.name}} - {{list.name}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js" charset="utf-8"></script>
+  <script src="js/app.js" charset="utf-8"></script>
+  <script src="js/controllers/mainController.js" charset="utf-8"></script>
+  <script src="js/services/GetMusicLists.js" charset="utf-8"></script>
+  <script src="js/services/GetMusic.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+
+</body>
+
+</html>
