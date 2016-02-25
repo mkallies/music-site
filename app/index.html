@@ -23,6 +23,9 @@
           <li class='bold'>
             <a href='#' class='waves-effect waves-teal' ng-click='select = 3'>last.fm</a>
           </li>
+          <li class='bold'>
+            <a href='#' class='waves-effect waves-teal' ng-click='select = 4'>YouTube</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -40,7 +43,7 @@
               <div class="card-content">
                 <span class="card-title">Hype Machine</span>
                 <div ng-repeat='list in hypem | limitTo:quantity'>
-                  <a class='waves-effect' href='#'>{{list.artist}} - {{list.title}}</a>
+                  <a class='waves-effect' ng-click='getSong($event)' href='#'>{{list.artist}} - {{list.title}}</a>
                 </div>
               </div>
             </div>
@@ -52,7 +55,7 @@
               <div class="card-content">
                 <span class="card-title">iTunes</span>
                 <div ng-repeat='list in itunes | limitTo:quantity'>
-                    <a class='waves-effect' href='#'>{{list["im:artist"].label}} - {{list["im:name"].label}}</a>
+                    <a class='waves-effect' ng-click='getSong($event)' href='#'>{{list["im:artist"].label}} - {{list["im:name"].label}}</a>
                 </div>
               </div>
             </div>
@@ -63,7 +66,18 @@
               <div class="card-content">
                 <span class="card-title">last.fm</span>
                 <div ng-repeat='list in lastfm | limitTo:quantity'>
-                    <a class='waves-effect' href='#'>{{list.artist.name}} - {{list.name}}</a>
+                    <a class='waves-effect' ng-click='getSong($event)' href='#'>{{list.artist.name}} - {{list.name}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col s10">
+            <div class="card" ng-show='select === 4'>
+              <div class="card-content">
+                <span class="card-title">YouTube</span>
+                <div ng-repeat='list in youtube | limitTo:quantity'>
+                    <a class='waves-effect' ng-click='getSong($event)' href='#'>{{list.artist.name}} - {{list.name}}</a>
                 </div>
               </div>
             </div>

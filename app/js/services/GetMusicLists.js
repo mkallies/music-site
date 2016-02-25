@@ -16,6 +16,13 @@ musicApp.factory('GetMusicLists', function($http) {
       return $http.get('http://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&format=json&api_key=c920361653455b3f809b6c38bcfc5a43').then(function(response) {
           return response.data.tracks.track;
         });
+    },
+    getYouTube: function() {
+      return $http.get('https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=PLFgquLnL59akuvsCHG83KKO2dpMA8uJQl')
+        .then(function(response) {
+          console.log(response);
+          return response;
+        });
     }
   };
 });
